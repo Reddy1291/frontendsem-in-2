@@ -1,77 +1,50 @@
-<section className="content">
-  <h1>Dashboard</h1>
-  <p>Your courses, assignments, notifications and progress are displayed here.</p>
+import React, { useState } from "react";
+import "./dashboard.css";
 
-  {/* Quick Summary Cards */}
-  <div className="cards">
-    <div className="card">Total Courses: 5</div>
-    <div className="card">Assignments Due: 2</div>
-    <div className="card">Average Marks: 88%</div>
-  </div>
+function DashboardLayout() {
+  const [open, setOpen] = useState(false);
 
-  {/* Assignments Section */}
-  <h2 className="section-title">Assignments</h2>
-  <table className="styled-table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Assignment</th>
-        <th>Due Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Maths</td>
-        <td>Unit–2 Problems</td>
-        <td>30-Nov-2025</td>
-        <td className="pending">Pending</td>
-      </tr>
-      <tr>
-        <td>English</td>
-        <td>Essay Writing</td>
-        <td>28-Nov-2025</td>
-        <td className="submitted">Submitted</td>
-      </tr>
-      <tr>
-        <td>Science</td>
-        <td>Lab Report</td>
-        <td>1-Dec-2025</td>
-        <td className="pending">Pending</td>
-      </tr>
-    </tbody>
-  </table>
+  return (
+    <div className="layout-container">
 
-  {/* Marks Section */}
-  <h2 className="section-title">Marks</h2>
-  <table className="styled-table">
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Mid Exam</th>
-        <th>Assignment</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Maths</td>
-        <td>28/30</td>
-        <td>9/10</td>
-        <td>37/40</td>
-      </tr>
-      <tr>
-        <td>English</td>
-        <td>25/30</td>
-        <td>10/10</td>
-        <td>35/40</td>
-      </tr>
-      <tr>
-        <td>Science</td>
-        <td>24/30</td>
-        <td>8/10</td>
-        <td>32/40</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+      {/* Sidebar */}
+      <aside className={`sidebar ${open ? "active" : ""}`}>
+        <h2 className="logo">Student</h2>
+        <ul>
+          <li>Home</li>
+          <li>Courses</li>
+          <li>Assignments</li>
+          <li>Results</li>
+          <li>Profile</li>
+        </ul>
+      </aside>
+
+      {/* MAIN */}
+      <div className="main">
+        <header className="taskbar">
+          <button className="menu-btn" onClick={() => setOpen(!open)}>☰</button>
+          <div className="task-left">Welcome, Student</div>
+
+          <div className="task-right">
+            <input type="text" placeholder="Search..." />
+            <button>Logout</button>
+          </div>
+        </header>
+
+        {/* CONTENT */}
+        <section className="content">
+          <h1>Dashboard</h1>
+          <p>Your courses, assignments, notifications and progress are displayed here.</p>
+
+          <div className="cards">
+            <div className="card">Courses: 5</div>
+            <div className="card">Assignments: 2</div>
+            <div className="card">Pending Tasks: 3</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+export default DashboardLayout;

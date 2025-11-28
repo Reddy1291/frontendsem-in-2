@@ -1,3 +1,4 @@
+import React from "react";
 import DashboardLayout from "./DashboardLayout";
 
 function App() {
